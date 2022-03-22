@@ -1,6 +1,6 @@
 # 🟢 Jerry(Windows, Easy)
 
-![](../.gitbook/assets/1.png)
+![](<../.gitbook/assets/1 (1).png>)
 
 ### Содержание:
 
@@ -25,13 +25,13 @@ PORT     STATE SERVICE VERSION
 
 На 8080 порту мы видим tomcat:
 
-![](../.gitbook/assets/2.png)
+![](<../.gitbook/assets/2 (1).png>)
 
 Можем перейти на /manager/html и использовать дефолтные креды, чтобы попасть в панель админа:
 
 `tomcat:s3cret`
 
-![](<../.gitbook/assets/3 (1).png>)
+![](<../.gitbook/assets/3 (1) (1).png>)
 
 ### Создаем war эксплоит с помощью msfvenom:
 

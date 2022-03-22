@@ -8,5 +8,6 @@
 
 ## HackTheBox Writeups
 
+* [🟢 Nunchucks(Linux, Easy)](hackthebox-writeups/nunchucks-linux-easy.md)
 * [🟢 Jerry(Windows, Easy)](hackthebox-writeups/jerry-windows-easy.md)
 * [🟢 Lame(Linux, Easy)](hackthebox-writeups/lame-linux-easy.md)
