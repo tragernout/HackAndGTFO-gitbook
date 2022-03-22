@@ -1,7 +1,7 @@
 # Table of contents
 
-* [Welcome!](README.md)
+* [HackAndGTFO](README.md)
 
 ## OWASP TOP 10
 
-* [MySQL UNION Injection](owasp-top-10/mysql-union-injection.md)
+* [SQL UNION Injection](owasp-top-10/sql-union-injection.md)
