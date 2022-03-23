@@ -1,6 +1,6 @@
 # 🟢 Netmon(Windows, Easy)
 
-![](../.gitbook/assets/1.png)
+![](<../.gitbook/assets/1 (1).png>)
 
 ### Содержание:
 
@@ -51,7 +51,7 @@ Host script results:
 
 ### Получаем флаг юзера и бэкап:
 
-![](<../.gitbook/assets/2 (1).png>)
+![](<../.gitbook/assets/2 (1) (1).png>)
 
 ### Скачиваем и читаем бэкап:
 
@@ -81,8 +81,8 @@ exploit/windows/http/prtg_authenticated_rce  2018-06-25       excellent  Yes    
 
 Настраиваем его так:
 
-![](<../.gitbook/assets/3 (1).png>)
+![](<../.gitbook/assets/3 (1) (1).png>)
 
 Теперь мы имеем доступ от имени администратора и можем прочитать root.txt:
 
-![](../.gitbook/assets/4.png)
+![](<../.gitbook/assets/4 (1).png>)
