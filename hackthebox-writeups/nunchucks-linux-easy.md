@@ -101,7 +101,7 @@ Connection: close
 }
 ```
 
-![](../.gitbook/assets/6.png)
+![](<../.gitbook/assets/6 (1).png>)
 
 ### Повышаем привилегии с помощью CAP\_SETUID + Perl
 
@@ -154,4 +154,4 @@ $ echo 'exec "/bin/sh";' >> exploit.pl
 $ chmod +x exploit.pl
 ```
 
-![](../.gitbook/assets/9.png)
+![](<../.gitbook/assets/9 (1).png>)
