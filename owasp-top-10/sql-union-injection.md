@@ -77,6 +77,7 @@ Sorry, 8.0.27-0ubuntu0.20.04.1 you are not eligible due to already qualifying.
 @@datadir - директория /data
 @@version - версия БД
 @@basedir - базовая директория
+load_file() - вывод определенного файла, например, load_file('/etc/passwd')
 user() - имя пользователя
 database() - база данных
 version() - версия
