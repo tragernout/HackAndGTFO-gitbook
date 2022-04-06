@@ -13,6 +13,7 @@
 * [🟢 Lame(Linux, Easy)](hackthebox-writeups/lame-linux-easy.md)
 * [🟢 Netmon(Windows, Easy)](hackthebox-writeups/netmon-windows-easy.md)
 * [⚪ Stacked(Linux, Insane)](hackthebox-writeups/stacked-linux-insane.md)
+* [🔴 Altered (Linux, Hard)](hackthebox-writeups/altered-linux-hard.md)
 
 ## Other
 
