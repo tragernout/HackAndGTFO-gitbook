@@ -5,6 +5,7 @@
 ## OWASP TOP 10
 
 * [SQL UNION Injection](owasp-top-10/sql-union-injection.md)
+* [Cross Site Scripting (XSS)](owasp-top-10/cross-site-scripting-xss.md)
 
 ## HackTheBox Writeups
 
