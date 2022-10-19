@@ -16,7 +16,9 @@
 * [⚪ Stacked(Linux, Insane)](hackthebox-writeups/stacked-linux-insane.md)
 * [🔴 Altered (Linux, Hard)](hackthebox-writeups/altered-linux-hard.md)
 
-## Other
+## In the future
 
-* [Создание telegram бота для VDS](other/sozdanie-telegram-bota-dlya-vds.md)
-* [HTTP Security Headers](other/http-security-headers.md)
+* [Установка Gentoo (UEFI + OpenRC + dmcrypt + LUKS)](in-the-future/ustanovka-gentoo-uefi-+-openrc-+-dmcrypt-+-luks.md)
+* [Установка и настройка IPS/IDS Suricata](in-the-future/ustanovka-i-nastroika-ips-ids-suricata.md)
+* [Создание telegram бота для работы на VDS](in-the-future/sozdanie-telegram-bota-dlya-raboty-na-vds.md)
+* [HTTP Security Headers](in-the-future/http-security-headers.md)
