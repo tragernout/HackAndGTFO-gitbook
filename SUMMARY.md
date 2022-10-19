@@ -18,7 +18,8 @@
 
 ## In the future
 
+* [Делаем всякое в линукс...](in-the-future/delaem-vsyakoe-v-linuks....md)
 * [Установка Gentoo (UEFI + OpenRC + dmcrypt + LUKS)](in-the-future/ustanovka-gentoo-uefi-+-openrc-+-dmcrypt-+-luks.md)
 * [Установка и настройка IPS/IDS Suricata](in-the-future/ustanovka-i-nastroika-ips-ids-suricata.md)
-* [Создание telegram бота для работы на VDS](in-the-future/sozdanie-telegram-bota-dlya-raboty-na-vds.md)
-* [HTTP Security Headers](in-the-future/http-security-headers.md)
+* [Создание telegram бота для работы на VDS](other/sozdanie-telegram-bota-dlya-vds.md)
+* [HTTP Security Headers](other/http-security-headers.md)
