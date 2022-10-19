@@ -18,4 +18,5 @@
 
 ## Other
 
+* [Создание telegram бота для VDS](other/sozdanie-telegram-bota-dlya-vds.md)
 * [HTTP Security Headers](other/http-security-headers.md)
