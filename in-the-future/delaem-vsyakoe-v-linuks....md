@@ -19,7 +19,7 @@ ffmpeg -i <not_compressed>.mp4 -c:v libx264 -preset slow -crf 23 -c:a copy <comp
 ## Быстрый VPN через SSH и sshuttle
 
 ```bash
-sshuttle --dns -vr kyle@192.168.88.217 0/0
+sshuttle --dns -vr <username>@<ip/domain> 0/0
 ```
 
 При этом sshuttle перебрасывает только DNS запросы и TCP трафик. Другие протоколы, например, UDP не поддерживаются.
