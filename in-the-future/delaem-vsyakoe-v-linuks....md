@@ -18,6 +18,10 @@ ffmpeg -i <not_compressed>.mp4 -c:v libx264 -preset slow -crf 23 -c:a copy <comp
 
 ## Быстрый VPN через SSH и sshuttle
 
+```
+sudo ufw enable
+```
+
 ```bash
 sshuttle --dns -vr <username>@<ip/domain> 0/0
 ```
