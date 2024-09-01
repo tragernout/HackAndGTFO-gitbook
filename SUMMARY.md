@@ -2,19 +2,34 @@
 
 * [HackAndGTFO](README.md)
 
-## OWASP TOP 10
+## Pentest Notes
 
-* [SQL UNION Injection](owasp-top-10/sql-union-injection.md)
-* [Cross Site Scripting (XSS)](owasp-top-10/cross-site-scripting-xss.md)
+* [SQL UNION Injection](pentest-notes/sql-union-injection.md)
+* [Cross Site Scripting (XSS)](pentest-notes/cross-site-scripting-xss.md)
 
 ## HackTheBox Writeups
 
-* [🟢 Nunchucks(Linux, Easy)](hackthebox-writeups/nunchucks-linux-easy.md)
-* [🟢 Jerry(Windows, Easy)](hackthebox-writeups/jerry-windows-easy.md)
-* [🟢 Lame(Linux, Easy)](hackthebox-writeups/lame-linux-easy.md)
-* [🟢 Netmon(Windows, Easy)](hackthebox-writeups/netmon-windows-easy.md)
-* [⚪ Stacked(Linux, Insane)](hackthebox-writeups/stacked-linux-insane.md)
-* [🔴 Altered (Linux, Hard)](hackthebox-writeups/altered-linux-hard.md)
+***
+
+* [CTF Writeups](ctf-writeups/README.md)
+  * [Содержание](ctf-writeups/soderzhanie.md)
+  * [HackTheBox](ctf-writeups/hackthebox/README.md)
+    * [Linux](ctf-writeups/hackthebox/linux/README.md)
+      * [Easy](ctf-writeups/hackthebox/linux/easy/README.md)
+        * [🟢 Lame (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/lame-linux-easy.md)
+        * [🟢 Nunchucks (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/nunchucks-linux-easy.md)
+      * [Medium](ctf-writeups/hackthebox/linux/medium.md)
+      * [Hard](ctf-writeups/hackthebox/linux/hard/README.md)
+        * [🔴 Altered (Linux, Hard)](ctf-writeups/hackthebox/linux/hard/altered-linux-hard.md)
+      * [Stacked](ctf-writeups/hackthebox/linux/stacked/README.md)
+        * [⚪ Stacked (Linux, Insane)](ctf-writeups/hackthebox/linux/stacked/stacked-linux-insane.md)
+    * [Windows](ctf-writeups/hackthebox/windows/README.md)
+      * [Easy](ctf-writeups/hackthebox/windows/easy/README.md)
+        * [🟢 Jerry (Windows, Easy)](ctf-writeups/hackthebox/windows/easy/jerry-windows-easy.md)
+        * [🟢 Netmon (Windows, Easy)](ctf-writeups/hackthebox/windows/easy/netmon-windows-easy.md)
+      * [Medium](ctf-writeups/hackthebox/windows/medium.md)
+      * [Hard](ctf-writeups/hackthebox/windows/hard.md)
+      * [Insane](ctf-writeups/hackthebox/windows/insane.md)
 
 ## In the future
 
