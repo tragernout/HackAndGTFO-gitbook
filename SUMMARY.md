@@ -4,8 +4,8 @@
 
 ## Pentest Notes
 
-* [SQL UNION Injection](pentest-notes/sql-union-injection.md)
 * [Cross Site Scripting (XSS)](pentest-notes/cross-site-scripting-xss.md)
+* [SQL UNION Injection](pentest-notes/sql-union-injection.md)
 
 ## HackTheBox Writeups
 
@@ -14,22 +14,23 @@
 * [CTF Writeups](ctf-writeups/README.md)
   * [Содержание](ctf-writeups/soderzhanie.md)
   * [HackTheBox](ctf-writeups/hackthebox/README.md)
-    * [Linux](ctf-writeups/hackthebox/linux/README.md)
-      * [Easy](ctf-writeups/hackthebox/linux/easy/README.md)
-        * [🟢 Lame (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/lame-linux-easy.md)
-        * [🟢 Nunchucks (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/nunchucks-linux-easy.md)
-      * [Medium](ctf-writeups/hackthebox/linux/medium.md)
-      * [Hard](ctf-writeups/hackthebox/linux/hard/README.md)
-        * [🔴 Altered (Linux, Hard)](ctf-writeups/hackthebox/linux/hard/altered-linux-hard.md)
-      * [Stacked](ctf-writeups/hackthebox/linux/stacked/README.md)
-        * [⚪ Stacked (Linux, Insane)](ctf-writeups/hackthebox/linux/stacked/stacked-linux-insane.md)
-    * [Windows](ctf-writeups/hackthebox/windows/README.md)
-      * [Easy](ctf-writeups/hackthebox/windows/easy/README.md)
-        * [🟢 Jerry (Windows, Easy)](ctf-writeups/hackthebox/windows/easy/jerry-windows-easy.md)
-        * [🟢 Netmon (Windows, Easy)](ctf-writeups/hackthebox/windows/easy/netmon-windows-easy.md)
-      * [Medium](ctf-writeups/hackthebox/windows/medium.md)
-      * [Hard](ctf-writeups/hackthebox/windows/hard.md)
-      * [Insane](ctf-writeups/hackthebox/windows/insane.md)
+    * [🐧 Linux](ctf-writeups/hackthebox/linux/README.md)
+      * [🟩 Easy](ctf-writeups/hackthebox/linux/easy/README.md)
+        * [Lame (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/lame-linux-easy.md)
+        * [Nunchucks (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/nunchucks-linux-easy.md)
+      * [🟨 Medium](ctf-writeups/hackthebox/linux/medium.md)
+      * [🟥 Hard](ctf-writeups/hackthebox/linux/hard/README.md)
+        * [Altered (Linux, Hard)](ctf-writeups/hackthebox/linux/hard/altered-linux-hard.md)
+      * [⬜ Stacked](ctf-writeups/hackthebox/linux/stacked/README.md)
+        * [Stacked (Linux, Insane)](ctf-writeups/hackthebox/linux/stacked/stacked-linux-insane.md)
+    * [🪟 Windows](ctf-writeups/hackthebox/windows/README.md)
+      * [🟩 Easy](ctf-writeups/hackthebox/windows/easy/README.md)
+        * [Jerry (Windows, Easy)](ctf-writeups/hackthebox/windows/easy/jerry-windows-easy.md)
+        * [Netmon (Windows, Easy)](ctf-writeups/hackthebox/windows/easy/netmon-windows-easy.md)
+      * [🟨 Medium](ctf-writeups/hackthebox/windows/medium.md)
+      * [🟥 Hard](ctf-writeups/hackthebox/windows/hard.md)
+      * [⬜ Insane](ctf-writeups/hackthebox/windows/insane.md)
+  * [TryHackMe](ctf-writeups/tryhackme.md)
 
 ## In the future
 

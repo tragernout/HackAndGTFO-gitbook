@@ -1,4 +1,4 @@
-# ⚪ Stacked (Linux, Insane)
+# Stacked (Linux, Insane)
 
 ![](../../../../.gitbook/assets/1.png)
 

@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # HTTP Security Headers
 
 **HTTP Security Headers** - это HTTP-заголовки для обеспечения безопасности веб-сайта.

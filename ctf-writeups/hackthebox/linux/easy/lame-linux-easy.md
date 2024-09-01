@@ -1,4 +1,4 @@
-# 🟢 Lame (Linux, Easy)
+# Lame (Linux, Easy)
 
 ###
 

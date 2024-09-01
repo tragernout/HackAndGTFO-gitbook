@@ -1,4 +1,4 @@
-# 🔴 Altered (Linux, Hard)
+# Altered (Linux, Hard)
 
 ![](<../../../../.gitbook/assets/image (4).png>)
 

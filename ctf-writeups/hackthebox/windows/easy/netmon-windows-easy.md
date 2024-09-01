@@ -1,4 +1,4 @@
-# 🟢 Netmon (Windows, Easy)
+# Netmon (Windows, Easy)
 
 ![](<../../../../.gitbook/assets/1 (1).png>)
 

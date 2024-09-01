@@ -1,4 +1,4 @@
-# 🟢 Nunchucks (Linux, Easy)
+# Nunchucks (Linux, Easy)
 
 ![](<../../../../.gitbook/assets/1 (1) (1).png>)
 
