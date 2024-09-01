@@ -8,11 +8,11 @@ Nunchucks - легкая машина, название которой уже д
 
 ### Сканируем порты с помощью nmap:
 
-```
+```bash
 $ nmap -sC -sV 10.10.11.122 -oN nmap
 ```
 
-```
+```bash
 PORT    STATE SERVICE  VERSION
 22/tcp  open  ssh      OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
