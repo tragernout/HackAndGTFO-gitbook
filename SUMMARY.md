@@ -18,6 +18,7 @@
       * [🟩 Easy](ctf-writeups/hackthebox/linux/easy/README.md)
         * [Lame (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/lame-linux-easy.md)
         * [Nunchucks (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/nunchucks-linux-easy.md)
+        * [Bashed (Linux, Easy)](ctf-writeups/hackthebox/linux/easy/bashed-linux-easy.md)
       * [🟨 Medium](ctf-writeups/hackthebox/linux/medium.md)
       * [🟥 Hard](ctf-writeups/hackthebox/linux/hard/README.md)
         * [Altered (Linux, Hard)](ctf-writeups/hackthebox/linux/hard/altered-linux-hard.md)
