@@ -40,3 +40,7 @@
 * [Установка и настройка IPS/IDS Suricata](in-the-future/ustanovka-i-nastroika-ips-ids-suricata.md)
 * [Создание telegram бота для работы на VDS](other/sozdanie-telegram-bota-dlya-vds.md)
 * [HTTP Security Headers](other/http-security-headers.md)
+
+## CV
+
+* [🧾 About me](cv/about-me.md)
